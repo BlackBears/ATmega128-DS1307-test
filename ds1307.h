@@ -1,36 +1,52 @@
-/*
- * ds1307.h
- *
- * Created: 3/30/2012 11:06:48 AM
- *  Author: Owner
- */ 
-
+/*! \file ds1307.h \brief DS1307, support for real-time clock for AVR */
+//*****************************************************************************
+//
+//  File Name       : 'ds1307.h'
+//  Title           : DS1307 real-time clock support for AVR        
+//  Author          : Alan K. Duncan - Copyright (c) 2012
+//  Created         : 2012-03-30
+//  Modified        : 2012-04-03
+//  Version         : 1.0
+//  Target MCU      : Atmel AVR series
+//
+// This code is distributed under the GNU Public License
+//		which can be found at http://www.gnu.org/licenses/gpl.txt
+//
+//*****************************************************************************
 
 #ifndef DS1307_H_
 #define DS1307_H_
 
 #include "global.h"
 
-#define DS1307_SECONDS_ADDR		0x00
-#define DS1307_MINUTES_ADDR		0x01
-#define DS1307_HOURS_ADDR		0x02
-#define DS1307_DAY_ADDR			0x03
-#define DS1307_DATE_ADDR		0x04
-#define DS1307_MONTH_ADDR		0x05
-#define DS1307_YEAR_ADDR		0x06
-#define DS1307_CONTROL_ADDR		0x07
-
 enum { kDS1307Mode12HR, kDS1307Mode24HR};
 typedef u08 DS1307HourMode;
 
+//! Initialize the DS1307 device with hour mode
 void ds1307_init(DS1307HourMode mode);
+
+//! Read the seconds register
 u08 ds1307_seconds(void);
+
+//! Read the minutes register
 u08 ds1307_minutes(void);
+
+//! Read the hours register
 u08 ds1307_hours(void);
+
+//! Read the date register
 u08 ds1307_date(void);
+
+//! Set the seconds
 void ds1307_set_seconds(u08 seconds);
+
+//! Set the minutes
 void ds1307_set_minutes(u08 minutes);
+
+//! Set the hours
 void ds1307_set_hours(u08 hours);
+
+//! Set the year
 void ds1307_set_year(u08 year);
 
 #endif /* DS1307_H_ */

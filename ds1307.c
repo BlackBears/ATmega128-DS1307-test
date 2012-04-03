@@ -1,19 +1,41 @@
-/*
- * ds1307.c
- *
- * Created: 3/30/2012 11:07:13 AM
- *  Author: Owner
- */ 
-
+/*! \file ds1307.c \brief DS1307, support for real-time clock for AVR */
+//*****************************************************************************
+//
+//  File Name       : 'ds1307.c'
+//  Title           : DS1307 real-time clock support for AVR        
+//  Author          : Alan K. Duncan - Copyright (c) 2012
+//  Created         : 2012-03-30
+//  Modified        : 2012-04-03
+//  Version         : 1.0
+//  Target MCU      : Atmel AVR series
+//
+// This code is distributed under the GNU Public License
+//		which can be found at http://www.gnu.org/licenses/gpl.txt
+//
+//*****************************************************************************
 #include "ds1307.h"
 #include "i2c.h"
 
+/*  base hardware address of the device */
 #define DS1307_BASE_ADDRESS 0xD0
+
+/*  register addresses  */
+#define DS1307_SECONDS_ADDR		0x00
+#define DS1307_MINUTES_ADDR		0x01
+#define DS1307_HOURS_ADDR		0x02
+#define DS1307_DAY_ADDR			0x03
+#define DS1307_DATE_ADDR		0x04
+#define DS1307_MONTH_ADDR		0x05
+#define DS1307_YEAR_ADDR		0x06
+#define DS1307_CONTROL_ADDR		0x07
+
+/*  control bits    */
 #define CH (1<<7)
 #define HR (1<<6)
 
 u08 device_data[2];
 
+/*  private function prototypes     */
 u08 ds1307_read_register(u08 reg);
 void  ds1307_write_register(u08 reg,u08 data);
 
